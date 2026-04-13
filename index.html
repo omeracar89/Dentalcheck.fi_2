@@ -555,19 +555,10 @@ footer a { color: var(--signal); text-decoration: none; }
       Considering dental work in Turkey, Hungary, or abroad? Upload your treatment plan and X-rays. A licensed dentist with no ties to any clinic will tell you if the plan is sound — or if you're being oversold.
     </p>
 
-    <!--
-      ┌─────────────────────────────────────────────────┐
-      │  MAILCHIMP SETUP (2 min):                       │
-      │  1. Log in to Mailchimp → Audience → Signup     │
-      │     forms → Embedded forms                      │
-      │  2. Copy form action URL, paste below           │
-      │  3. Replace XXXX with your u= value             │
-      │  4. Replace YYYY with your id= value            │
-      └─────────────────────────────────────────────────┘
-    -->
     <form class="hero-form" id="waitlist" onsubmit="handleSubmit(event)"
-      data-action="https://dentalcheck.us21.list-manage.com/subscribe/post-json?u=XXXX&id=YYYY&c=?">
+      data-action="https://dentalcheck.us2.list-manage.com/subscribe/post-json?u=bf16df8a4d24961295eefd935&id=2cb165c9f6&c=?">
       <input type="email" placeholder="Your email" required name="EMAIL" />
+      <div style="position:absolute;left:-5000px" aria-hidden="true"><input type="text" name="b_bf16df8a4d24961295eefd935_2cb165c9f6" tabindex="-1" value=""></div>
       <button type="submit">Join Waitlist</button>
     </form>
     <span class="hero-note">No spam. We'll email you once when we launch.</span>
@@ -710,8 +701,9 @@ footer a { color: var(--signal); text-decoration: none; }
     <h2>€64 now could save you<br>€5,000+ later.</h2>
     <p class="lead">Join the waitlist. We'll notify you the moment we launch — and early subscribers get priority access.</p>
     <form class="hero-form" onsubmit="handleSubmit(event)"
-      data-action="https://dentalcheck.us21.list-manage.com/subscribe/post-json?u=XXXX&id=YYYY&c=?">
+      data-action="https://dentalcheck.us2.list-manage.com/subscribe/post-json?u=bf16df8a4d24961295eefd935&id=2cb165c9f6&c=?">
       <input type="email" placeholder="Your email" required name="EMAIL" />
+      <div style="position:absolute;left:-5000px" aria-hidden="true"><input type="text" name="b_bf16df8a4d24961295eefd935_2cb165c9f6" tabindex="-1" value=""></div>
       <button type="submit">Join Waitlist</button>
     </form>
     <span class="hero-note">No spam. We'll email you once when we launch.</span>
@@ -739,13 +731,6 @@ function handleSubmit(e) {
   btn.textContent = 'Sending...';
   btn.disabled = true;
   input.disabled = true;
-
-  // If Mailchimp URL is still placeholder, save locally & show success
-  if (actionUrl.includes('XXXX')) {
-    console.log('📧 Waitlist signup (connect Mailchimp!):', email);
-    showSuccess(form, input, btn, origText);
-    return;
-  }
 
   // JSONP request to Mailchimp (avoids CORS, no redirect)
   const url = actionUrl + '&EMAIL=' + encodeURIComponent(email);
