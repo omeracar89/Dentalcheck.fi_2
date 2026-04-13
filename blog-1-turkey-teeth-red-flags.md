@@ -58,7 +58,7 @@ If you've received a treatment plan based solely on photos you sent via WhatsApp
 
 None of these red flags automatically means a clinic is bad or that you shouldn't go abroad for treatment. Plenty of overseas clinics do excellent work. The point is that *you* need to be able to tell the difference — and most patients can't, because they're not dentists.
 
-That's exactly why we built DentalCheck.fi. For €49, you can upload your overseas treatment plan, X-rays, and clinical photos. A licensed EU dentist — with no ties to any clinic or tourism agency — will review everything and give you an honest, written assessment within 24 hours.
+That's exactly why we built DentalCheck.fi. For €64, you can upload your overseas treatment plan, X-rays, and clinical photos. A licensed EU dentist — with no ties to any clinic or tourism agency — will review everything and give you an honest, written assessment within 24 hours.
 
 If the plan looks good, we'll tell you. If there are problems, we'll tell you that too — along with specific questions to put to your clinic before you commit.
 

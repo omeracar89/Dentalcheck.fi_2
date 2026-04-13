@@ -66,7 +66,7 @@ This assessment can serve as the basis for conversations with both your home den
 
 ## Prevention is still the best medicine
 
-If you're reading this article *before* travelling for dental work, you're in the best possible position. A €49 treatment plan review before you commit is far less expensive — financially and physically — than dealing with complications after the fact.
+If you're reading this article *before* travelling for dental work, you're in the best possible position. A €64 treatment plan review before you commit is far less expensive — financially and physically — than dealing with complications after the fact.
 
 If you're reading this because something has already gone wrong, know that most problems are fixable. The path forward may not be simple or cheap, but with the right information and the right professionals, you can get to a good outcome.
 

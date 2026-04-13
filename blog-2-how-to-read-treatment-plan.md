@@ -58,7 +58,7 @@ Not every overseas treatment plan needs a second opinion. If you're getting a st
 
 But if your treatment plan involves any of the following, an independent review is worth considering: multiple crowns on teeth that may not need them, implant placement (especially with bone grafting), extraction of teeth that might be saveable, any procedure described as a "full mouth reconstruction" or "smile makeover", or a total cost exceeding €3,000.
 
-At these stakes, the €49 cost of having a licensed, independent dentist review your plan is genuinely insignificant — but the insight it provides could change your decision entirely.
+At these stakes, the €64 cost of having a licensed, independent dentist review your plan is genuinely insignificant — but the insight it provides could change your decision entirely.
 
 ## What a DentalCheck review covers
 
