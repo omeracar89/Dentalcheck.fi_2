@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DentalCheck.fi — Independent Second Opinion Before Dental Tourism</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,400;1,9..144,700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --deep: #0C1B2A;
+  --ink: #152232;
+  --slate: #1E3044;
+  --steel: #8A9BB0;
+  --mist: #C2CFDC;
+  --cloud: #E9EEF3;
+  --snow: #F6F8FA;
+  --white: #FFFFFF;
+  --signal: #3B9ED9;
+  --signal-bright: #5BB8F0;
+  --alert: #D94F3B;
+  --safe: #2EAA6F;
+  --border: #D8DFE7;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Manrope', sans-serif;
+  color: var(--deep);
+  background: var(--snow);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 1rem 2.5rem;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(12,27,42,0.95);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.logo {
+  font-family: 'Fraunces', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--white);
+  text-decoration: none;
+  letter-spacing: -0.03em;
+}
+.logo span { color: var(--signal-bright); }
+.nav-right { display: flex; align-items: center; gap: 1.5rem; }
+.nav-link {
+  color: var(--steel);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.nav-link:hover { color: var(--white); }
+.btn-nav {
+  background: var(--signal);
+  color: var(--white);
+  padding: 0.55rem 1.4rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.88rem;
+  transition: all 0.2s;
+}
+.btn-nav:hover { background: var(--signal-bright); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  background: var(--deep);
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  padding: 7rem 2rem 5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 900px 500px at 30% 40%, rgba(59,158,217,0.06), transparent),
+    radial-gradient(ellipse 600px 600px at 70% 60%, rgba(59,158,217,0.04), transparent);
+  pointer-events: none;
+}
+/* subtle grid texture */
+.hero::after {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+.hero-content { position: relative; z-index: 1; max-width: 900px; }
+
+.hero-pill {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 0.5rem 1.2rem;
+  border-radius: 100px;
+  font-size: 0.82rem;
+  color: var(--steel);
+  margin-bottom: 2.5rem;
+  font-weight: 500;
+  opacity: 0; animation: fadeUp 0.6s 0.2s ease forwards;
+}
+.fi-flag {
+  display: inline-block;
+  width: 20px; height: 14px;
+  background: var(--white);
+  position: relative;
+  border-radius: 2px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.fi-flag::before {
+  content: '';
+  position: absolute;
+  left: 5px; top: 0; width: 4px; height: 100%;
+  background: #003580;
+}
+.fi-flag::after {
+  content: '';
+  position: absolute;
+  top: 5px; left: 0; width: 100%; height: 4px;
+  background: #003580;
+}
+
+/* THE headline — impossible to miss */
+.hero-headline {
+  font-family: 'Fraunces', serif;
+  font-weight: 800;
+  font-size: clamp(2.6rem, 6.5vw, 4.5rem);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  color: var(--white);
+  margin-bottom: 2rem;
+  opacity: 0; animation: fadeUp 0.7s 0.35s ease forwards;
+}
+.hero-headline .highlight {
+  display: inline;
+  background: linear-gradient(180deg, transparent 55%, rgba(59,158,217,0.3) 55%);
+  padding-bottom: 2px;
+}
+
+.hero-sub {
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  color: var(--steel);
+  max-width: 620px;
+  margin: 0 auto 3rem;
+  line-height: 1.7;
+  font-weight: 400;
+  opacity: 0; animation: fadeUp 0.7s 0.5s ease forwards;
+}
+
+.hero-form {
+  display: flex; gap: 0.6rem;
+  max-width: 460px;
+  margin: 0 auto 1.25rem;
+  opacity: 0; animation: fadeUp 0.7s 0.65s ease forwards;
+}
+.hero-form input {
+  flex: 1;
+  padding: 0.9rem 1.2rem;
+  background: rgba(255,255,255,0.06);
+  border: 1.5px solid rgba(255,255,255,0.12);
+  border-radius: 10px;
+  color: var(--white);
+  font-size: 0.95rem;
+  font-family: 'Manrope', sans-serif;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.hero-form input:focus { border-color: var(--signal); }
+.hero-form input::placeholder { color: rgba(255,255,255,0.3); }
+.hero-form button {
+  padding: 0.9rem 1.8rem;
+  background: var(--signal);
+  color: var(--white);
+  border: none;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-family: 'Manrope', sans-serif;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+.hero-form button:hover { background: var(--signal-bright); transform: translateY(-1px); }
+.hero-note {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.25);
+  opacity: 0; animation: fadeUp 0.7s 0.8s ease forwards;
+}
+
+/* ── SOCIAL PROOF BAR ── */
+.proof-bar {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 1.75rem 2rem;
+}
+.proof-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+}
+.proof-item {
+  display: flex; align-items: center; gap: 0.6rem;
+  font-size: 0.85rem;
+  color: var(--steel);
+  font-weight: 500;
+}
+.proof-num {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--deep);
+}
+.proof-divider {
+  width: 1px; height: 24px;
+  background: var(--border);
+}
+
+/* ── SECTION BASICS ── */
+section { padding: 5.5rem 2rem; }
+.container { max-width: 1000px; margin: 0 auto; }
+.tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--signal);
+  margin-bottom: 0.75rem;
+}
+h2 {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+  line-height: 1.18;
+  letter-spacing: -0.025em;
+  margin-bottom: 1rem;
+}
+.lead {
+  font-size: 1.05rem;
+  color: var(--steel);
+  max-width: 580px;
+  line-height: 1.7;
+  margin-bottom: 3rem;
+}
+
+/* ── WHY SECTION ── */
+.why { background: var(--snow); }
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+.why-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 2rem;
+  transition: all 0.25s;
+}
+.why-card:hover { border-color: var(--signal); box-shadow: 0 4px 20px rgba(59,158,217,0.08); }
+.why-icon {
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem;
+  margin-bottom: 1.25rem;
+}
+.why-card:nth-child(1) .why-icon { background: #FDE9E7; }
+.why-card:nth-child(2) .why-icon { background: #FFF3E0; }
+.why-card:nth-child(3) .why-icon { background: #E3F2FD; }
+.why-card h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.65rem;
+  letter-spacing: -0.01em;
+}
+.why-card p {
+  font-size: 0.9rem;
+  color: var(--steel);
+  line-height: 1.6;
+}
+
+/* ── HOW ── */
+.how { background: var(--white); }
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  position: relative;
+}
+.steps::before {
+  content: '';
+  position: absolute;
+  top: 28px; left: 10%; right: 10%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--border), var(--signal), var(--border));
+  opacity: 0.5;
+  z-index: 0;
+}
+.step {
+  position: relative; z-index: 1;
+  text-align: center;
+}
+.step-num {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--snow);
+  border: 2px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 1.25rem;
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--signal);
+  transition: all 0.3s;
+}
+.step:hover .step-num { background: var(--signal); color: var(--white); border-color: var(--signal); }
+.step h3 {
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+.step p {
+  font-size: 0.85rem;
+  color: var(--steel);
+  line-height: 1.55;
+}
+
+/* ── PRICING ── */
+.pricing { background: var(--snow); }
+.pricing-center { text-align: center; }
+.pricing-box {
+  max-width: 500px;
+  margin: 0 auto;
+  background: var(--white);
+  border: 2px solid var(--deep);
+  border-radius: 18px;
+  padding: 2.75rem 2.5rem;
+  text-align: center;
+  position: relative;
+}
+.pricing-badge {
+  position: absolute;
+  top: -14px; left: 50%; transform: translateX(-50%);
+  background: var(--deep);
+  color: var(--white);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.4rem 1.2rem;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+.pricing-amount {
+  font-family: 'Fraunces', serif;
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--deep);
+  margin: 1rem 0 0.25rem;
+  letter-spacing: -0.03em;
+}
+.pricing-amount span { font-size: 1.1rem; color: var(--steel); font-weight: 500; }
+.pricing-sub {
+  font-size: 0.9rem;
+  color: var(--steel);
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+.pricing-list {
+  list-style: none;
+  text-align: left;
+  margin-bottom: 2rem;
+}
+.pricing-list li {
+  padding: 0.55rem 0;
+  font-size: 0.92rem;
+  display: flex; align-items: flex-start; gap: 0.7rem;
+}
+.pricing-list li::before {
+  content: '✓';
+  color: var(--safe);
+  font-weight: 800;
+  flex-shrink: 0;
+}
+.btn-primary {
+  display: block; width: 100%;
+  padding: 1rem;
+  background: var(--deep);
+  color: var(--white);
+  border: none; border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: 'Manrope', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  text-align: center;
+}
+.btn-primary:hover { background: var(--ink); transform: translateY(-1px); }
+
+/* ── TRUST ── */
+.trust { background: var(--white); }
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+}
+.trust-card {
+  padding: 1.75rem;
+  background: var(--snow);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+.trust-card h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.trust-card p {
+  font-size: 0.85rem;
+  color: var(--steel);
+  line-height: 1.55;
+}
+.trust-finland {
+  margin-top: 2.5rem;
+  display: flex; align-items: center; justify-content: center; gap: 2rem;
+  flex-wrap: wrap;
+}
+.trust-badge {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-size: 0.82rem;
+  color: var(--steel);
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  background: var(--snow);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+.trust-badge strong { color: var(--deep); }
+
+/* ── FINAL CTA ── */
+.final {
+  background: var(--deep);
+  text-align: center;
+  padding: 6rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.final::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 700px 400px at 50% 50%, rgba(59,158,217,0.08), transparent);
+  pointer-events: none;
+}
+.final-content { position: relative; z-index: 1; }
+.final h2 {
+  color: var(--white);
+  margin-bottom: 1rem;
+}
+.final .lead {
+  color: var(--steel);
+  margin: 0 auto 2.5rem;
+  max-width: 500px;
+}
+.final .hero-form { margin-bottom: 1rem; }
+.final .hero-note { display: block; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--deep);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 2rem;
+  text-align: center;
+}
+footer p {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.2);
+  line-height: 1.6;
+}
+footer a { color: var(--signal); text-decoration: none; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .steps { grid-template-columns: 1fr 1fr; }
+  .steps::before { display: none; }
+  nav { padding: 0.85rem 1.25rem; }
+  .nav-link { display: none; }
+  .proof-inner { gap: 1.25rem; }
+  .proof-divider { display: none; }
+  .hero-form { flex-direction: column; }
+  .hero-form button { width: 100%; }
+  .pricing-box { padding: 2rem 1.5rem; }
+}
+@media (max-width: 480px) {
+  .steps { grid-template-columns: 1fr; }
+  section { padding: 4rem 1.25rem; }
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo">Dental<span>Check</span>.fi</a>
+  <div class="nav-right">
+    <a href="#how" class="nav-link">How it works</a>
+    <a href="#pricing" class="nav-link">Pricing</a>
+    <a href="#waitlist" class="btn-nav">Join Waitlist</a>
+  </div>
+</nav>
+
+<!-- ═══════ HERO ═══════ -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-pill">
+      <span class="fi-flag"></span>
+      By licensed Nordic dentists · Launching 2026
+    </div>
+
+    <h1 class="hero-headline">
+      <span class="highlight">Independent second opinion</span><br>
+      before dental tourism.
+    </h1>
+
+    <p class="hero-sub">
+      Considering dental work in Turkey, Hungary, or abroad? Upload your treatment plan and X-rays. A licensed dentist with no ties to any clinic will tell you if the plan is sound — or if you're being oversold.
+    </p>
+
+    <!--
+      ┌─────────────────────────────────────────────────┐
+      │  MAILCHIMP SETUP (2 min):                       │
+      │  1. Log in to Mailchimp → Audience → Signup     │
+      │     forms → Embedded forms                      │
+      │  2. Copy form action URL, paste below           │
+      │  3. Replace XXXX with your u= value             │
+      │  4. Replace YYYY with your id= value            │
+      └─────────────────────────────────────────────────┘
+    -->
+    <form class="hero-form" id="waitlist" onsubmit="handleSubmit(event)"
+      data-action="https://dentalcheck.us21.list-manage.com/subscribe/post-json?u=XXXX&id=YYYY&c=?">
+      <input type="email" placeholder="Your email" required name="EMAIL" />
+      <button type="submit">Join Waitlist</button>
+    </form>
+    <span class="hero-note">No spam. We'll email you once when we launch.</span>
+  </div>
+</section>
+
+<!-- ═══════ PROOF BAR ═══════ -->
+<div class="proof-bar">
+  <div class="proof-inner">
+    <div class="proof-item">
+      <span class="proof-num">86%</span> of UK dentists report complications from overseas work
+    </div>
+    <div class="proof-divider"></div>
+    <div class="proof-item">
+      <span class="proof-num">400k+</span> patients treated in Turkey alone in 2023
+    </div>
+    <div class="proof-divider"></div>
+    <div class="proof-item">
+      <span class="proof-num">3–10×</span> the cost to fix failed work at home
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ WHY ═══════ -->
+<section class="why">
+  <div class="container">
+    <div class="tag">The problem</div>
+    <h2>You're about to spend €5,000–€20,000<br>based on one-sided information</h2>
+    <p class="lead">The clinic that wrote the treatment plan is the same one that profits from it. You need someone who doesn't.</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">⚠️</div>
+        <h3>Overtreatment is common</h3>
+        <p>Healthy teeth ground down to stumps for crowns. Implants where they're not needed. Aggressive procedures sold as "smile makeovers" that destroy irreversible tooth structure.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🔍</div>
+        <h3>Nobody checks the plan</h3>
+        <p>Your treatment plan comes with a price tag, not a second opinion. Your home dentist may not comment. The overseas clinic has a clear conflict of interest.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🏠</div>
+        <h3>Aftercare falls on you</h3>
+        <p>When something goes wrong after you fly home, your local dentist may refuse to touch work done abroad. You're stuck between two countries with no clear next step.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ HOW ═══════ -->
+<section class="how" id="how">
+  <div class="container">
+    <div class="tag">How it works</div>
+    <h2>An honest assessment in 24 hours</h2>
+    <p class="lead">No clinic affiliations. No referral fees. Just a licensed dentist reviewing your case independently.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Upload your plan</h3>
+        <p>Share the treatment plan from the overseas clinic, your X-rays or CT scan, and any photos.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Expert review</h3>
+        <p>A licensed dentist analyses the proposed treatment for overtreatment, red flags, and missing steps.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Written report</h3>
+        <p>You receive a clear assessment: what's sound, what's concerning, and exactly what to ask before committing.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3>Video follow-up</h3>
+        <p>Need to talk it through? Book a short call to discuss your case and options in detail.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ PRICING ═══════ -->
+<section class="pricing" id="pricing">
+  <div class="container pricing-center">
+    <div class="tag">Pricing</div>
+    <h2>Less than 1% of your treatment cost.<br>Worth every cent.</h2>
+    <p class="lead" style="margin-left:auto;margin-right:auto;">One flat fee. No hidden costs. No upselling. If the plan looks good, we'll tell you that too.</p>
+    <div class="pricing-box">
+      <div class="pricing-badge">Treatment Plan Review</div>
+      <div class="pricing-amount">€49 <span>one-time</span></div>
+      <p class="pricing-sub">That's less than a dinner out — for a decision that affects your teeth for life</p>
+      <ul class="pricing-list">
+        <li>Full clinical review of your overseas treatment plan</li>
+        <li>X-ray and CT scan analysis</li>
+        <li>Written report delivered within 24 hours</li>
+        <li>Red flag identification and risk assessment</li>
+        <li>Specific questions to ask your clinic before committing</li>
+        <li>Assessment of proposed materials and techniques</li>
+      </ul>
+      <a href="#waitlist" class="btn-primary">Join the Waitlist →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ TRUST ═══════ -->
+<section class="trust">
+  <div class="container">
+    <div class="tag">Why trust us</div>
+    <h2>No affiliations. No commissions.<br>No conflicts of interest.</h2>
+    <p class="lead">Our only revenue comes from you — not from the clinics we evaluate. That's the whole point.</p>
+    <div class="trust-grid">
+      <div class="trust-card">
+        <h4>🇪🇺 EU-Licensed</h4>
+        <p>Every review by a fully licensed dentist with years of hands-on clinical experience in the EU healthcare system.</p>
+      </div>
+      <div class="trust-card">
+        <h4>Zero affiliations</h4>
+        <p>We don't partner with clinics, agencies, or tourism operators. We have no incentive to recommend or discourage any provider.</p>
+      </div>
+      <div class="trust-card">
+        <h4>Evidence-based</h4>
+        <p>Assessments follow current clinical guidelines, not personal opinions. If your plan is good, we'll say so.</p>
+      </div>
+      <div class="trust-card">
+        <h4>Already been treated?</h4>
+        <p>Came back and something doesn't feel right? We also review completed overseas work and advise on next steps.</p>
+      </div>
+    </div>
+    <div class="trust-finland">
+      <div class="trust-badge"><span class="fi-flag"></span> <strong>Based in Finland</strong></div>
+      <div class="trust-badge">🏥 <strong>#1 healthcare system</strong> — Legatum 2023</div>
+      <div class="trust-badge">🛡️ <strong>#3 in clinical quality</strong> — FREOPP 2024</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FINAL CTA ═══════ -->
+<section class="final">
+  <div class="final-content">
+    <div class="tag" style="color: var(--signal-bright);">Get started</div>
+    <h2>€49 now could save you<br>€5,000+ later.</h2>
+    <p class="lead">Join the waitlist. We'll notify you the moment we launch — and early subscribers get priority access.</p>
+    <form class="hero-form" onsubmit="handleSubmit(event)"
+      data-action="https://dentalcheck.us21.list-manage.com/subscribe/post-json?u=XXXX&id=YYYY&c=?">
+      <input type="email" placeholder="Your email" required name="EMAIL" />
+      <button type="submit">Join Waitlist</button>
+    </form>
+    <span class="hero-note">No spam. We'll email you once when we launch.</span>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 DentalCheck.fi · Hammashelppi Oy · Finland<br>
+  This service provides professional second opinions, not diagnoses or treatment plans. Always consult your local dentist for clinical decisions.</p>
+</footer>
+
+<script>
+function handleSubmit(e) {
+  e.preventDefault();
+  const form = e.target;
+  const input = form.querySelector('input[type="email"]');
+  const btn = form.querySelector('button');
+  const email = input.value.trim();
+  const actionUrl = form.getAttribute('data-action');
+
+  if (!email) return;
+
+  // Show loading state
+  const origText = btn.textContent;
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+  input.disabled = true;
+
+  // If Mailchimp URL is still placeholder, save locally & show success
+  if (actionUrl.includes('XXXX')) {
+    console.log('📧 Waitlist signup (connect Mailchimp!):', email);
+    showSuccess(form, input, btn, origText);
+    return;
+  }
+
+  // JSONP request to Mailchimp (avoids CORS, no redirect)
+  const url = actionUrl + '&EMAIL=' + encodeURIComponent(email);
+  const callbackName = 'mc_cb_' + Date.now();
+
+  window[callbackName] = function(resp) {
+    delete window[callbackName];
+    document.getElementById(callbackName)?.remove();
+    if (resp.result === 'success' || resp.msg?.includes('already subscribed')) {
+      showSuccess(form, input, btn, origText);
+    } else {
+      btn.textContent = 'Try again';
+      btn.style.background = '#D94F3B';
+      input.disabled = false;
+      btn.disabled = false;
+      setTimeout(() => { btn.textContent = origText; btn.style.background = ''; }, 3000);
+    }
+  };
+
+  const script = document.createElement('script');
+  script.id = callbackName;
+  script.src = url.replace('c=?', 'c=' + callbackName);
+  document.body.appendChild(script);
+}
+
+function showSuccess(form, input, btn, origText) {
+  btn.textContent = '✓ You\'re on the list';
+  btn.style.background = '#2EAA6F';
+  input.value = '';
+  setTimeout(() => {
+    btn.textContent = origText;
+    btn.style.background = '';
+    input.disabled = false;
+    btn.disabled = false;
+  }, 4000);
+}
+</script>
+
+</body>
+</html>
